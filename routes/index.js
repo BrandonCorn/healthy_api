@@ -1,5 +1,5 @@
 const router = require('express').Router(); 
-const { inToCm, lbToKg, calcBMI, calcBMR, calcCalories, loseGain } = require('../controllers/calculations'); 
+const { calcBMI, bmiHealth, calcBMR, calcCalories, calcLossGain } = require('../controllers/calculations'); 
 const validate = require('../middleware/validate');  
 
 router.get('/calc_health_stats', validate, async (req,res) => { 
@@ -15,13 +15,12 @@ router.get('/calc_health_stats', validate, async (req,res) => {
         bmi: calcBMI(userData), 
         bmr: calcBMR(userData), 
     }
-    healthData.maint_cals = await calcCalories(userData.activity,healthData.bmr); 
-    loseGain(healthData);  
-    console.log(healthData); 
     if (!healthData.bmi) res.status(400).send('Error calculating BMI'); 
-    if (!healthData.bmr) res.status(400).send('Error calculating BMR'); 
+    healthData.bmi_health = bmiHealth(healthData.bmi); 
+    if (!healthData.bmr) res.status(400).send('Error calculating BMR');
+    healthData.maint_cals = await calcCalories(userData.activity,healthData.bmr);  
     if (!healthData.maint_cals) res.status(400).send('Error calculating maintenance calorie intake'); 
-
+    calcLossGain(healthData); 
     res.status(200).send(healthData); 
 })
 

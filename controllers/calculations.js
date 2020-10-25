@@ -10,14 +10,19 @@ const lbToKg = pounds => pounds * .454
 
 //BMI Formula
 //** BMI = (wLb / hIn**2) * 703 */
-//** RETURN VALUE NEEDS TO BE ROUNDED TWO PLACES */
 const calcBMI = personData => Math.round((personData.weight / personData.height**2) * 703); 
 
+//Determine persons health based on BMI
+const bmiHealth = bmi => {
+    if (bmi < 18.5) return 'underweight'
+    else if (bmi > 18.5 && bmi < 25) return 'normal'
+    else if (bmi >= 25 && bmi < 29.9) return 'overweight' 
+    else if (bmi >= 30) return 'obese'
+}
 
 //BMR formula
 //** Male: 66.4730 + (6.3 * wLb) + (12.9 * hIn) - (6.8 * ageY)
 //** Female: 655 + (4.3 * wLb) + (4.7 * hIn) - (4.7 * ageY) */ */
-//** BMR NEEDS TO BE ROUNDED TWO PLACES!! */
 const calcBMR = personData => {
     if (personData.gender === 'male'){
         let bmr = 66 + (6.3 * personData.weight) + (12.9 * personData.height) 
@@ -49,13 +54,15 @@ const calcCalories = (activity,bmr) => {
     else if (activity == 5) return Math.round(bmr * 1.9)
 }
 
+
 //Calculates the calories needed to gain or lose a half pound and one pound
-const loseGain = personData => {
+const calcLossGain = personData => {
     personData.cals_lose_one = personData.maint_cals - 500; 
     personData.cals_lose_two = personData.maint_cals - 1000; 
     personData.cals_gain_one = personData.maint_cals + 500; 
     personData.cals_gain_two = personData.maint_cals + 1000; 
 }
+
 
 module.exports = {
     inToCm, 
@@ -63,5 +70,6 @@ module.exports = {
     calcBMI,
     calcBMR,
     calcCalories,
-    loseGain,
+    calcLossGain,
+    bmiHealth,
 }

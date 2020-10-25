@@ -11,7 +11,7 @@ const lbToKg = pounds => pounds * .454
 //BMI Formula
 //** BMI = (wLb / hIn**2) * 703 */
 //** RETURN VALUE NEEDS TO BE ROUNDED TWO PLACES */
-const calcBMI = personData => (personData.weight / personData.height**2) * 703
+const calcBMI = personData => Math.round((personData.weight / personData.height**2) * 703); 
 
 
 //BMR formula
@@ -22,12 +22,12 @@ const calcBMR = personData => {
     if (personData.gender === 'male'){
         let bmr = 66 + (6.3 * personData.weight) + (12.9 * personData.height) 
             - (6.8 * personData.age); 
-        return bmr; 
+        return Math.round(bmr);  
     }
     else if (personData.gender === 'female'){
         let bmr = 655 + (4.3 * personData.weight) + (4.7 * personData.height)
             - (4.7 * personData.age);  
-        return bmr; 
+        return Math.round(bmr); 
     }
     else {
         return; 
@@ -43,13 +43,19 @@ const calcBMR = personData => {
 // 5: Very Hard exercise/sports & physical job or 2 a day training, intake = BMR * 1.9
 const calcCalories = (activity,bmr) => {
     if (activity == 1 ) return bmr * 1.2
-    else if (activity == 2) return bmr * 1.375
-    else if (activity == 3) return bmr * 1.55
-    else if (activity == 4) return bmr * 1.725
-    else if (activity == 5) return bmr * 1.9
+    else if (activity == 2) return Math.round(bmr * 1.375)
+    else if (activity == 3) return Math.round(bmr * 1.55)
+    else if (activity == 4) return Math.round(bmr * 1.725)
+    else if (activity == 5) return Math.round(bmr * 1.9)
 }
 
-
+//Calculates the calories needed to gain or lose a half pound and one pound
+const loseGain = personData => {
+    personData.cals_lose_half = personData.maint_cals - 500; 
+    personData.cals_lose_one = personData.maint_cals - 1000; 
+    personData.cals_gain_half = personData.maint_cals + 500; 
+    personData.cals_gain_one = personData.maint_cals + 1000; 
+}
 
 module.exports = {
     inToCm, 
@@ -57,4 +63,5 @@ module.exports = {
     calcBMI,
     calcBMR,
     calcCalories,
+    loseGain,
 }

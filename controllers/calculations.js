@@ -51,10 +51,10 @@ const calcCalories = (activity,bmr) => {
 
 //Calculates the calories needed to gain or lose a half pound and one pound
 const loseGain = personData => {
-    personData.cals_lose_half = personData.maint_cals - 500; 
-    personData.cals_lose_one = personData.maint_cals - 1000; 
-    personData.cals_gain_half = personData.maint_cals + 500; 
-    personData.cals_gain_one = personData.maint_cals + 1000; 
+    personData.cals_lose_one = personData.maint_cals - 500; 
+    personData.cals_lose_two = personData.maint_cals - 1000; 
+    personData.cals_gain_one = personData.maint_cals + 500; 
+    personData.cals_gain_two = personData.maint_cals + 1000; 
 }
 
 module.exports = {

@@ -3,11 +3,11 @@
 The purpose of the Healthy API is to provide health information to a user who submits data about themselves or others. For those trying to lose or gain weight, it's best to resubmit your data every 3 to 4 weeks to update your caloric intake based on needs. 
 
 **The following data is required for the Healthy API:** 
-    *height(inches)
-    *weight(pounds)
-    *age(years)
-    *gender (male/female)
-    *activity(1 - 5)
+    * height(inches)
+    * weight(pounds)
+    * age(years)
+    * gender (male/female)
+    * activity(1 - 5)
 
 **Activity is based on a scale ranging from 1 to 5**. The following are used to determine which range a person falls in: 
     *1: Little to no exercise

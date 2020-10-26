@@ -3,7 +3,7 @@
 The purpose of the Healthy API is to provide health information to a user who submits data about themselves or others. For those trying to lose or gain weight, it's best to resubmit your data every 3 to 4 weeks to update your caloric intake based on needs. 
 
 **The following data is required for the Healthy API:** 
-    * height(inches)
+    * height(inches)*
     * weight(pounds)
     * age(years)
     * gender (male/female)
@@ -30,11 +30,11 @@ The response from the api will be a json object with the following data:
     bmi: 'value is your body mass index', 
     bmr: 'value is your basal metabolic rate,
     bmi_health: 'value stating whether individual is under, over, normal, or obese in weight', 
-    maint_cals: 'value is number calories needed to maintain current weight , 
-    cals_lose_one: 'value is number calories needed to lose 1 pound per week', 
-    cals_lose_two: 'value is number calories needed to lose 2 pound per week', 
-    cals_gain_one: 'value is number calories needed to gain 1 pound per week', 
-    cals_gain_two: 'value is number calories needed to gain 2 pound per week', 
+    maint_cals: 'cals/day to maintain current weight', 
+    cals_lose_one: 'cals/day to lose 1 pound a week', 
+    cals_lose_two: 'cals/day to lose 2 pounds a week', 
+    cals_gain_one: 'cals/day to gain 1 pound a week', 
+    cals_gain_two: 'cals/day to gain 2 pounds a week', 
 }
 ```
 ## How data is calculated 

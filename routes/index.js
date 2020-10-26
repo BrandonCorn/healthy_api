@@ -15,13 +15,13 @@ router.get('/calc_health_stats', validate, async (req,res) => {
         bmi: calcBMI(userData), 
         bmr: calcBMR(userData), 
     }
-    if (!healthData.bmi) res.status(400).send('Error calculating BMI'); 
+    if (!healthData.bmi) return res.status(400).send('Error calculating BMI'); 
     healthData.bmi_health = bmiHealth(healthData.bmi); 
-    if (!healthData.bmr) res.status(400).send('Error calculating BMR');
+    if (!healthData.bmr) return res.status(400).send('Error calculating BMR');
     healthData.maint_cals = await calcCalories(userData.activity,healthData.bmr);  
-    if (!healthData.maint_cals) res.status(400).send('Error calculating maintenance calorie intake'); 
+    if (!healthData.maint_cals) return res.status(400).send('Error calculating maintenance calorie intake'); 
     calcLossGain(healthData); 
-    res.status(200).send(healthData); 
+    return res.status(200).send(healthData); 
 })
 
 

@@ -21,7 +21,7 @@ The purpose of the Healthy API is to provide health information to a user who su
 
 This API responds to a GET request to the address "alsdjfladj/calc_health_stats". Inorder to work properly the GET request must have the required data above as request query params like in the example below. 
 
-*https://lajsglasjdflja/calc_health_stats?height=65&weight=154&age=23&gender=male&activity=4*
+*https://healthyapi.herokuapp.com/calc_health_stats?height=65&weight=154&age=23&gender=male&activity=4*
 
 
 The response from the api will be a json object with the following data: 

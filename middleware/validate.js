@@ -8,7 +8,7 @@ module.exports = (req,res,next) => {
     //check miscellaneous 
     if (req.query.age < 1 || req.query.age > 100) return res.status(400).send('Not a valid age'); 
     if (req.query.gender.toLowerCase().trim() != 'male' && req.query.gender.toLowerCase().trim() != 'female') return res.status(400).send('Not a valid gender');  
-    if (req.query.activity > 5 || req.query.activity < 1) return res.status(400).send('Not a valid activity value, see documentation'); 
+    if (parseInt(req.query.activity) > 5 || parseInt(req.query.activity) < 1) return res.status(400).send('Not a valid activity value, see documentation'); 
     else{
         next(); 
     }

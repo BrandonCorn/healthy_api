@@ -25,7 +25,7 @@ This API responds to a GET request to the address "alsdjfladj/calc_health_stats"
 
 
 The response from the api will be a json object with the following data: 
-
+```
 {
     bmi: 'value is your body mass index', 
     bmr: 'value is your basal metabolic rate,
@@ -36,7 +36,7 @@ The response from the api will be a json object with the following data:
     cals_gain_one: 'value is number calories needed to gain 1 pound per week', 
     cals_gain_two: 'value is number calories needed to gain 2 pound per week', 
 }
-
+```
 ## How data is calculated 
 
 **Body Mass Index Formula:** 
